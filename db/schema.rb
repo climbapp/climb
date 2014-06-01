@@ -31,22 +31,14 @@ ActiveRecord::Schema.define(version: 20140601214924) do
 
   add_index "bills", ["payee_id"], name: "index_bills_on_payee_id", using: :btree
 
-  create_table "categories", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "payees", force: true do |t|
     t.string   "name"
     t.string   "recurring"
     t.integer  "user_id"
-    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "payees", ["category_id"], name: "index_payees_on_category_id", using: :btree
   add_index "payees", ["user_id"], name: "index_payees_on_user_id", using: :btree
 
   create_table "users", force: true do |t|

@@ -4,7 +4,6 @@ class CreatePayees < ActiveRecord::Migration
       t.string :name
       t.string :recurring
       t.references :user, index: true
-      t.references :category, index: true
 
       t.timestamps
     end
