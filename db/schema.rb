@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140601213646) do
+ActiveRecord::Schema.define(version: 20140601214924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bills", force: true do |t|
+    t.string   "name"
+    t.boolean  "paid?"
+    t.float    "amount_due"
+    t.datetime "due_date"
+    t.float    "late_fee"
+    t.float    "interest"
+    t.float    "min_due"
+    t.integer  "payee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bills", ["payee_id"], name: "index_bills_on_payee_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "name"

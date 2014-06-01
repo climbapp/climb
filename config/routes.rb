@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :bills
+
   resources :payees
 
   resources :categories
