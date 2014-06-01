@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bill.name %>
+</p>
+
+<p>
+  <strong>Paid?:</strong>
+  <%= @bill.paid? %>
+</p>
+
+<p>
+  <strong>Amount due:</strong>
+  <%= @bill.amount_due %>
+</p>
+
+<p>
+  <strong>Due date:</strong>
+  <%= @bill.due_date %>
+</p>
+
+<p>
+  <strong>Late fee:</strong>
+  <%= @bill.late_fee %>
+</p>
+
+<p>
+  <strong>Interest:</strong>
+  <%= @bill.interest %>
+</p>
+
+<p>
+  <strong>Min due:</strong>
+  <%= @bill.min_due %>
+</p>
+
+<p>
+  <strong>Payee:</strong>
+  <%= @bill.payee %>
+</p>
+
+<%= link_to 'Edit', edit_bill_path(@bill) %> |
+<%= link_to 'Back', bills_path %>

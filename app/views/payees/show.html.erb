@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @payee.name %>
+</p>
+
+<p>
+  <strong>Recurring:</strong>
+  <%= @payee.recurring %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @payee.user %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @payee.category %>
+</p>
+
+<%= link_to 'Edit', edit_payee_path(@payee) %> |
+<%= link_to 'Back', payees_path %>
