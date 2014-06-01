@@ -32,6 +32,7 @@ group :development do
 end
 
 group :development, :test do
+  gem "cool_faker"
   gem "factory_girl"
 end
 
