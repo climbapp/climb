@@ -14,5 +14,10 @@ FactoryGirl.define do
     phone { Faker::PhoneNumber.cell_phone}
   end
 
+  factory :payee do
+    name { CoolFaker::Character.name }
+    recurring { "yearly" }
+    user
+  end
 
 end
