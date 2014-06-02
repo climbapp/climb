@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => { :case_sensitive => false }
   validates :phone, :presence => true, :if => :sms_remind?
 
+  has_many :payees
 
+  def sms_remind?
+    :sms_remind?
+  end
 
 end
