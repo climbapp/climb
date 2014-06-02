@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20140601214924) do
   create_table "bills", force: true do |t|
     t.string   "name"
     t.boolean  "paid?"
-    t.float    "amount_due"
-    t.datetime "due_date"
+    t.float    "amount_due", null: false
+    t.datetime "due_date",   null: false
     t.float    "late_fee"
     t.float    "interest"
     t.float    "min_due"
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20140601214924) do
   add_index "bills", ["payee_id"], name: "index_bills_on_payee_id", using: :btree
 
   create_table "payees", force: true do |t|
-    t.string   "name"
-    t.string   "recurring"
+    t.string   "name",       null: false
+    t.string   "recurring",  null: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(version: 20140601214924) do
   add_index "payees", ["user_id"], name: "index_payees_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password"
+    t.string   "name",          null: false
+    t.string   "email",         null: false
+    t.string   "password",      null: false
     t.boolean  "sms_remind?"
     t.boolean  "email_remind?"
     t.integer  "phone"

@@ -33,12 +33,15 @@ end
 
 group :development, :test do
   gem "cool_faker"
-  gem "factory_girl"
+  gem "faker"
+  gem "factory_girl_rails"
 end
 
 
 group :test do
   gem "rspec-rails"
+  gem "shoulda-matchers"
+  gem "minitest"
 end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
