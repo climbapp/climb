@@ -4,4 +4,5 @@ class User < ActiveRecord::Base
   validates :phone, :presence => true, :if => :sms_remind?
 
 
+
 end
