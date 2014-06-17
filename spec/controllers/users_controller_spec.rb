@@ -39,8 +39,14 @@ describe UsersController do
       end
 
       context "invalid attributes" do
-        it "does not create a new user"
-        it "renders new_user template"
+        let(:create_invalid_user){post :create, :user => FactoryGirl.attributes_for(:user)}
+        it "does not create a new user" do
+          expect{ create_invalid_user }.to change{User.count}.by(0)
+        end
+        it "renders new_user template" do
+          create_invalid_user
+          expect(response).to render_template(:new)
+        end
       end
     end
 
