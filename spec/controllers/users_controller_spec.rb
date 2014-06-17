@@ -65,9 +65,15 @@ describe UsersController do
 
   describe "update" do
     context "format html" do
+      let(:my_user){FactoryGirl.create(:user_phone)}
       context "valid attributes" do
-        it "updates the user's attributes"
-        it "redirects to @user"
+        before(:each){ patch :update, :id => my_user.id, :user => {name: "Ned Stark"} }
+        it "updates the user's attributes" do
+          expect(my_user.reload.name).to eq "Ned Stark"
+        end
+        it "redirects to @user" do
+          expect(response).to redirect_to user_path(my_user)
+        end
       end
 
       context "invalid attributes" do
