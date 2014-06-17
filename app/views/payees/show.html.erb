@@ -12,8 +12,8 @@
 
 <p>
   <strong>User:</strong>
-  <%= @payee.user %>
+  <%= @payee.user.name %>
 </p>
 
 <%= link_to 'Edit', edit_payee_path(@payee) %> |
-<%= link_to 'Back', payees_path %>
+<%= link_to 'Home', user_path(@payee.user) %>

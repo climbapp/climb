@@ -1,34 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<h1>Listing <%= @user.name %>'s payees</h1>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Recurring</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
+  <tbody>
+    <% @payees.each do |payee| %>
+      <tr>
+        <td><%= payee.name %></td>
+        <td><%= payee.recurring %></td>
+        <td><%= payee.user.name %></td>
+        <td><%= link_to 'Show', payee %></td>
+        <td><%= link_to 'Edit', edit_payee_path(payee) %></td>
+        <td><%= link_to 'Destroy', payee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<p>
-  <strong>Sms remind?:</strong>
-  <%= @user.sms_remind? %>
-</p>
-
-<p>
-  <strong>Email remind?:</strong>
-  <%= @user.email_remind? %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @user.phone %>
-</p>
+<br>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to "New Payee", "/users/#{@user.id}/payees/new" %>

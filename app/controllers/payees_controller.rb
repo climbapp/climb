@@ -14,6 +14,7 @@ class PayeesController < ApplicationController
 
   # GET /payees/new
   def new
+    @user = User.find(params[:user_id])
     @payee = Payee.new
   end
 
@@ -25,7 +26,7 @@ class PayeesController < ApplicationController
   # POST /payees.json
   def create
     @payee = Payee.new(payee_params)
-
+    @payee.user = User.find(params[:user_id])
     respond_to do |format|
       if @payee.save
         format.html { redirect_to @payee, notice: 'Payee was successfully created.' }
@@ -56,7 +57,7 @@ class PayeesController < ApplicationController
   def destroy
     @payee.destroy
     respond_to do |format|
-      format.html { redirect_to payees_url, notice: 'Payee was successfully destroyed.' }
+      format.html { redirect_to user_path(@payee.user), notice: 'Payee was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
