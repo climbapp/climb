@@ -77,8 +77,13 @@ describe UsersController do
       end
 
       context "invalid attributes" do
-        it "doesn't update the user's attributes"
-        it "renders the edit user form"
+        before(:each) { patch :update, :id => my_user.id, :user => {name: nil}}
+        it "doesn't update the user's attributes" do
+          expect(my_user.reload.name).to_not be_nil
+        end
+        it "renders the edit user form" do
+          expect(response).to render_template(:edit)
+        end
       end
     end
 
