@@ -6,7 +6,6 @@
       <th>Name</th>
       <th>Recurring</th>
       <th>User</th>
-      <th>Category</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,7 +16,6 @@
         <td><%= payee.name %></td>
         <td><%= payee.recurring %></td>
         <td><%= payee.user %></td>
-        <td><%= payee.category %></td>
         <td><%= link_to 'Show', payee %></td>
         <td><%= link_to 'Edit', edit_payee_path(payee) %></td>
         <td><%= link_to 'Destroy', payee, method: :delete, data: { confirm: 'Are you sure?' } %></td>

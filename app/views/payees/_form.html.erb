@@ -19,10 +19,10 @@
     <%= f.label :recurring %><br>
     <%= f.text_field :recurring %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
+  <% if @user %>
+    <%= hidden_field_tag :user_id, @user.id %>
+  <% end %>
+
 
   <div class="actions">
     <%= f.submit %>
