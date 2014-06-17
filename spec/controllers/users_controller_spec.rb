@@ -101,9 +101,16 @@ describe UsersController do
   end
 
   describe "destroy" do
-    it "destroys the user"
+    let!(:dead_user){FactoryGirl.create(:user_phone)}
+    let(:delete_user){delete :destroy, :id => dead_user.id}
+    it "destroys the user" do
+      expect{delete_user}.to change{User.count}.by(-1)
+    end
     context "format html" do
-      it "redirects to users_url"
+      it "redirects to users_url" do
+        delete_user
+        expect(response).to redirect_to users_url
+      end
     end
     context "format json" do
       it "does something i don't understand"
