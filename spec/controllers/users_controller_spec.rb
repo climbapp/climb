@@ -28,8 +28,14 @@ describe UsersController do
     it "assigns @user to a new user"
     context "format html" do
       context "valid attributes" do
-        it "creates a new user"
-        it "redirects to @user"
+        let(:create_user){post :create, :user => FactoryGirl.attributes_for(:user_phone)}
+        it "creates a new user" do
+          expect{create_user}.to change{User.count}.by(1)
+        end
+        it "redirects" do
+          create_user
+          expect(response).to be_redirect
+        end
       end
 
       context "invalid attributes" do
