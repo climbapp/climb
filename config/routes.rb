@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   resources :bills
-
+  get '/payees/:payee_id/bills/new', :to => 'bills#new'
   resources :payees
   get '/users/:user_id/payees/new', :to => 'payees#new'
-
 
   resources :categories
 

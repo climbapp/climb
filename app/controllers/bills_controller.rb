@@ -15,6 +15,7 @@ class BillsController < ApplicationController
   # GET /bills/new
   def new
     @bill = Bill.new
+    @payee = Payee.find(params[:payee_id])
   end
 
   # GET /bills/1/edit
@@ -25,7 +26,7 @@ class BillsController < ApplicationController
   # POST /bills.json
   def create
     @bill = Bill.new(bill_params)
-
+    @bill.payee = Payee.find(params[:payee_id])
     respond_to do |format|
       if @bill.save
         format.html { redirect_to @bill, notice: 'Bill was successfully created.' }
