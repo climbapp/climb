@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20140601214924) do
     t.string   "password",      null: false
     t.boolean  "sms_remind?"
     t.boolean  "email_remind?"
-    t.integer  "phone"
+    t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

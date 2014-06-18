@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password, null: false
       t.boolean :sms_remind?
       t.boolean :email_remind?
-      t.integer :phone
+      t.string :phone
 
       t.timestamps
     end
