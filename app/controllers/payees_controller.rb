@@ -10,6 +10,7 @@ class PayeesController < ApplicationController
   # GET /payees/1
   # GET /payees/1.json
   def show
+    @bills = @payee.bills
   end
 
   # GET /payees/new
