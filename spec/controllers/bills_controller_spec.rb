@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe BillsController do
+  let(:my_user){FactoryGirl.create(:user_phone)}
+  let(:my_payee){FactoryGirl.create(:payee, :user => my_user)}
   describe '#index' do
     before(:each){ get :index }
     it "is successful" do
@@ -48,8 +50,6 @@ describe BillsController do
   end
 
   describe '#update' do
-    let(:my_user){FactoryGirl.create(:user_phone)}
-    let(:my_payee){FactoryGirl.create(:payee, :user => my_user)}
     let(:my_bill){FactoryGirl.create(:bill, :payee => my_payee)}
     context '#valid attributes' do
       before(:each){ patch :update, :id => my_bill.id, bill: {name: "Iron Bank of Braavos"} }
@@ -68,6 +68,19 @@ describe BillsController do
       it "renders edit template" do
         expect(response).to render_template(:edit)
       end
+    end
+  end
+
+  describe '#destroy' do
+    let!(:to_delete){FactoryGirl.create(:bill, payee: my_payee)}
+    let(:delete_bill){delete :destroy, id: to_delete.id}
+    it "destroys the bill" do
+      expect{delete_bill}.to change{Bill.count}.by(-1)
+    end
+
+    it "redirects to bills_url" do
+      delete_bill
+      expect(response).to redirect_to bills_url
     end
   end
 
