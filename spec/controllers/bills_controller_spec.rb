@@ -47,4 +47,29 @@ describe BillsController do
     end
   end
 
+  describe '#update' do
+    let(:my_user){FactoryGirl.create(:user_phone)}
+    let(:my_payee){FactoryGirl.create(:payee, :user => my_user)}
+    let(:my_bill){FactoryGirl.create(:bill, :payee => my_payee)}
+    context '#valid attributes' do
+      before(:each){ patch :update, :id => my_bill.id, bill: {name: "Iron Bank of Braavos"} }
+      it "updates the bill" do
+        expect(my_bill.reload.name).to eq "Iron Bank of Braavos"
+      end
+      it "redirects to @bill" do
+        expect(response).to redirect_to bill_path(my_bill)
+      end
+    end
+    context '#invalid attributes' do
+      before(:each){ patch :update, :id => my_bill.id, bill: {amount_due: nil} }
+      it "does not update the bill" do
+        expect(my_bill.reload.amount_due).to_not be_nil
+      end
+      it "renders edit template" do
+        expect(response).to render_template(:edit)
+      end
+    end
+  end
+
+
 end
