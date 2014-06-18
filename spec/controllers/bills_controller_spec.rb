@@ -15,7 +15,7 @@ describe BillsController do
   end
 
   describe '#new' do
-    before(:each){ get :new }
+    before(:each){ get :new, payee_id: my_payee.id }
     it "is successful" do
       expect(response).to be_successful
     end
@@ -27,7 +27,7 @@ describe BillsController do
 
   describe '#create' do
     context '#valid attributes' do
-      let(:create_bill){post :create, bill: FactoryGirl.attributes_for(:bill)}
+      let(:create_bill){post :create, payee_id: my_payee.id, bill: FactoryGirl.attributes_for(:bill)}
       it "creates a bill" do
         expect{create_bill}.to change{Bill.count}.by(1)
       end
@@ -38,7 +38,7 @@ describe BillsController do
     end
 
     context '#invalid attributes' do
-      let(:create_invalid_bill){ post :create, bill: {name: "Iron Bank of Braavos"}}
+      let(:create_invalid_bill){ post :create, payee_id: my_payee.id, bill: {name: "Iron Bank of Braavos"}}
       it "doesn't create a bill" do
         expect{create_invalid_bill}.to change{Bill.count}.by(0)
       end
