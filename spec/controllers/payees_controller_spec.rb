@@ -51,4 +51,27 @@ describe PayeesController do
       end
     end
   end
+
+  describe '#update' do
+    let(:iron_bank){FactoryGirl.create(:payee, :user => ned_stark)}
+    context 'valid attributes' do
+      before(:each){ patch :update, id: iron_bank.id, payee: {name: "Iron Bank of Braavos"}}
+      it "updates the payee" do
+        expect(iron_bank.reload.name).to eq "Iron Bank of Braavos"
+      end
+      it "redirects_to @payee" do
+        expect(response).to redirect_to payee_path(iron_bank)
+      end
+    end
+
+    context 'invalid attributes' do
+      before(:each){ patch :update, id: iron_bank.id, payee: {name: nil}}
+      it "doesn't update the payee" do
+        expect(iron_bank.reload.name).to_not be_nil
+      end
+      it "renders the edit template" do
+        expect(response).to render_template(:edit)
+      end
+    end
+  end
 end
