@@ -12,10 +12,10 @@ def getDate
 end
 
 User.destroy_all
-Client.destroy_all
-Goal.destroy_all
+Payee.destroy_all
+Bill.destroy_all
 
-Joe = User.create({ name: "Joe Blow", email: "joe@charity.org", password: "123", sms_remind?: true, email_remind?: false })
+joe = User.create({ name: "Joe Blow", email: "joe@charity.org", password: "123", sms_remind?: true, email_remind?: false })
 
 users = [joe]
 10.times do
@@ -29,7 +29,7 @@ users.each do |user|
   end
 end
 
-comcast = Payee.create({ name: "Comcast", recurring: "Monthly", user: stephen })
+comcast = Payee.create({ name: "Comcast", recurring: "Monthly", user: joe })
 payees << comcast
 
 bills = []
