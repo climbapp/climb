@@ -74,4 +74,16 @@ describe PayeesController do
       end
     end
   end
+
+  describe '#destroy' do
+    let!(:to_delete){FactoryGirl.create(:payee, user: ned_stark)}
+    let(:delete_payee){delete :destroy, id: to_delete.id}
+    it "destroys the payee" do
+      expect{ delete_payee }.to change{ Payee.count }.by(-1)
+    end
+    it "redirects to user_path" do
+      delete_payee
+      expect(response).to redirect_to user_path(ned_stark)
+    end
+  end
 end
