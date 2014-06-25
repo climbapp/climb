@@ -16,6 +16,9 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
+  Monban.test_mode!
+
+  config.include Monban::Test::ControllerHelpers, type: :controller
   config.include Monban::Test::Helpers, type: :feature
   config.after :each do
     Monban.test_reset!
