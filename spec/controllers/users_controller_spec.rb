@@ -15,6 +15,7 @@ describe UsersController do
 
   describe "new" do
     before(:each){ get :new }
+
     it "is successful" do
       expect(response).to be_successful
     end
@@ -26,10 +27,12 @@ describe UsersController do
 
   describe "create" do
     context "valid attributes" do
-      let(:create_user){post :create, :user => FactoryGirl.attributes_for(:user_phone)}
+      let(:create_user){ post :create, :user => FactoryGirl.attributes_for(:user_phone) }
+
       it "creates a new user" do
-        expect{create_user}.to change{User.count}.by(1)
+        expect{ create_user }.to change{ User.count }.by(1)
       end
+
       it "redirects" do
         create_user
         expect(response).to be_redirect
@@ -38,9 +41,11 @@ describe UsersController do
 
     context "invalid attributes" do
       let(:create_invalid_user){post :create, :user => FactoryGirl.attributes_for(:user)}
+
       it "does not create a new user" do
         expect{ create_invalid_user }.to change{User.count}.by(0)
       end
+
       it "renders new_user template" do
         create_invalid_user
         expect(response).to render_template(:new)
@@ -50,12 +55,14 @@ describe UsersController do
   end
 
   describe "update" do
-    let(:my_user){FactoryGirl.create(:user_phone)}
+    let(:my_user){ FactoryGirl.create(:user_phone) }
     context "valid attributes" do
       before(:each){ patch :update, :id => my_user.id, :user => {name: "Ned Stark"} }
+
       it "updates the user's attributes" do
         expect(my_user.reload.name).to eq "Ned Stark"
       end
+
       it "redirects to @user" do
         expect(response).to redirect_to user_path(my_user)
       end
@@ -66,6 +73,7 @@ describe UsersController do
       it "doesn't update the user's attributes" do
         expect(my_user.reload.name).to_not be_nil
       end
+
       it "renders the edit user form" do
         expect(response).to render_template(:edit)
       end
@@ -78,10 +86,10 @@ describe UsersController do
     it "destroys the user" do
       expect{delete_user}.to change{User.count}.by(-1)
     end
+
     it "redirects to users_url" do
       delete_user
       expect(response).to redirect_to users_url
     end
   end
-
 end
