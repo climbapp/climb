@@ -13,6 +13,7 @@ class UsersController < ApplicationController
       sign_in(@user)
       redirect_to root_path
     else
+      p @user.errors.to_a
       render :new
     end
   end

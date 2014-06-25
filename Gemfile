@@ -45,7 +45,7 @@ group :test, :development do
 end
 
 group :test do
-  gem "shoulda-matchers"
+  gem 'shoulda-matchers', require: false
   gem "minitest"
 end
 # Use ActiveModel has_secure_password

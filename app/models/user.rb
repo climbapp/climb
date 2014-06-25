@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :payees
 
   def sms_remind_preferred?
-    :sms_remind?
+    sms_remind?
   end
 
 end
