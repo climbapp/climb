@@ -3,7 +3,7 @@ require 'spec_helper'
 describe PayeesController do
   let(:ned_stark){FactoryGirl.create(:user_phone)}
 
-  describe '#index' do
+  describe "#index" do
     before(:each){ get :index }
 
     it "is successful" do
@@ -15,7 +15,7 @@ describe PayeesController do
     end
   end
 
-  describe '#new' do
+  describe "#new" do
     before(:each){ get :new, :user_id => ned_stark.id }
 
     it "is successful" do
@@ -31,8 +31,8 @@ describe PayeesController do
     end
   end
 
-  describe '#create' do
-    context 'valid attributes' do
+  describe "#create" do
+    context "valid attributes" do
       let(:create_payee){ post :create, :user_id => ned_stark.id, payee:
         FactoryGirl.attributes_for(:payee) }
 
@@ -50,7 +50,7 @@ describe PayeesController do
       end
     end
 
-    context 'invalid attributes' do
+    context "invalid attributes" do
       let(:create_invalid_payee){ post :create, :user_id => ned_stark.id,
         payee: { name: nil } }
 
@@ -65,9 +65,9 @@ describe PayeesController do
     end
   end
 
-  describe '#update' do
+  describe "#update" do
     let(:iron_bank){ FactoryGirl.create(:payee, :user => ned_stark) }
-    context 'valid attributes' do
+    context "valid attributes" do
       before(:each){ patch :update, id: iron_bank.id, payee: { name: "Iron Bank of Braavos" } }
 
       it "updates the payee" do
@@ -79,21 +79,21 @@ describe PayeesController do
       end
     end
 
-    context 'invalid attributes' do
+    context "invalid attributes" do
       before(:each){ patch :update, id: iron_bank.id, payee: {name: nil}}
       it "doesn't update the payee" do
         expect(iron_bank.reload.name).to_not be_nil
       end
+
       it "renders the edit template" do
         expect(response).to render_template(:edit)
       end
     end
   end
 
-  describe '#destroy' do
+  describe "#destroy" do
     let!(:to_delete){ FactoryGirl.create(:payee, user: ned_stark) }
     let(:delete_payee){delete :destroy, id: to_delete.id}
-
     it "destroys the payee" do
       expect{ delete_payee }.to change{ Payee.count }.by(-1)
     end
