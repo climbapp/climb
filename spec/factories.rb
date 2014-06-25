@@ -1,11 +1,11 @@
 FactoryGirl.define do
 
-  factory :user do
+  factory :fakeuser do
     username { CoolFaker::Character.name }
     password_digest 'password'
   end
 
-  factory :user_phone, class: User do
+  factory :user_phone, class: FakeUser do
     username { CoolFaker::Character.name }
     email { Faker::Internet.email }
     password_digest 'password'
@@ -16,7 +16,7 @@ FactoryGirl.define do
   factory :payee do
     name { CoolFaker::Character.name }
     recurring { "yearly" }
-    user
+    fakeuser
   end
 
   factory :bill do

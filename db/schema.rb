@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140601214924) do
+ActiveRecord::Schema.define(version: 20140625073429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20140601214924) do
 
   add_index "bills", ["payee_id"], name: "index_bills_on_payee_id", using: :btree
 
+  create_table "fakeusers", force: true do |t|
+    t.string   "name",          null: false
+    t.string   "email",         null: false
+    t.string   "password",      null: false
+    t.boolean  "sms_remind?"
+    t.boolean  "email_remind?"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "payees", force: true do |t|
     t.string   "name",       null: false
     t.string   "recurring",  null: false
@@ -42,12 +53,8 @@ ActiveRecord::Schema.define(version: 20140601214924) do
   add_index "payees", ["user_id"], name: "index_payees_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "name",          null: false
-    t.string   "email",         null: false
-    t.string   "password",      null: false
-    t.boolean  "sms_remind?"
-    t.boolean  "email_remind?"
-    t.string   "phone"
+    t.string   "email"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

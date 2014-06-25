@@ -1,6 +1,6 @@
-class CreateUsers < ActiveRecord::Migration
+class CreateFakeUsers < ActiveRecord::Migration
   def change
-    create_table :users do |t|
+    create_table :fakeusers do |t|
       t.string :name, null: false
       t.string :email, null: false, unique: true
       t.string :password, null: false
