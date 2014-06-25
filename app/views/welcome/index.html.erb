@@ -1,5 +1,10 @@
 <h1>Welcome to Climb!</h1>
+
+<% if current_user %>
+  <h2>Get started! Hello Ruby</h2>
+<% end %>
+
 <p>Dig Your Way Out of Debt.</p>
 
 <%= link_to "Sign in", new_session_path %>
-<%= link_to "Sign Up!", new_user_path %>
+<%= link_to "Sign up", new_user_path %>

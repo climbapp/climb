@@ -5,7 +5,15 @@
   </div>
   <div>
     <%= form.label :password %>
-    <%= form.password_field :password %>
+    <%= form.password_field :password_digest %>
+  </div>
+  <div>
+    <%= form.label :sms %>
+    <%= form.check_box :sms_remind? %>
+  </div>
+  <div>
+    <%= form.label :phone %>
+    <%= form.telephone_field :phone %>
   </div>
   <div>
     <%= form.submit "Sign up" %>
