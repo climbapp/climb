@@ -55,6 +55,9 @@ ActiveRecord::Schema.define(version: 20140625073429) do
   create_table "users", force: true do |t|
     t.string   "email"
     t.string   "password_digest"
+    t.boolean  "sms_remind?"
+    t.boolean  "email_remind?"
+    t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
