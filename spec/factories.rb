@@ -1,15 +1,14 @@
 FactoryGirl.define do
 
   factory :user do
-    name { CoolFaker::Character.name }
-    email { Faker::Internet.email }
-    password { CoolFaker::Character.name }
+    username { CoolFaker::Character.name }
+    password_digest 'password'
   end
 
   factory :user_phone, class: User do
-    name { CoolFaker::Character.name }
+    username { CoolFaker::Character.name }
     email { Faker::Internet.email }
-    password { CoolFaker::Character.name }
+    password_digest 'password'
     sms_remind? { true }
     phone { Faker::PhoneNumber.cell_phone}
   end
