@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Payee do
   let!(:user1){ FactoryGirl.create(:user_phone) }

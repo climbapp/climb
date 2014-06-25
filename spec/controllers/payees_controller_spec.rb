@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe PayeesController do
   let(:ned_stark){FactoryGirl.create(:user_phone)}

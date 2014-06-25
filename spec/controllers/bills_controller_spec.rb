@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe BillsController do
   let(:my_user){FactoryGirl.create(:user_phone)}

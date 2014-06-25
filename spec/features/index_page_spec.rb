@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature 'Index page' do
   scenario 'user sees sign in information on index page' do
