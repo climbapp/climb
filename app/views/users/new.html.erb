@@ -1,5 +1,35 @@
-<h2>Create an Account</h2>
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<%= render 'form' %>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= link_to 'Back', users_path %>
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.label :sms_remind? %>
+    <%= f.check_box :sms_remind? %>
+  </div>
+  <div>
+    <%= f.label :phone %>
+    <%= f.telephone_field :phone %>
+  </div>
+  <div>
+    <%= f.submit "Sign up" %>
+  </div>
+
+<% end %>
+

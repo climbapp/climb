@@ -15,7 +15,7 @@ class PayeesController < ApplicationController
 
   # GET /payees/new
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @payee = Payee.new
   end
 
@@ -27,7 +27,7 @@ class PayeesController < ApplicationController
   # POST /payees.json
   def create
     @payee = Payee.new(payee_params)
-    @payee.user = User.find(params[:user_id])
+    @payee.user = current_user
     respond_to do |format|
       if @payee.save
         format.html { redirect_to @payee, notice: 'Payee was successfully created.' }

@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Payee do
-  let!(:user1){ FactoryGirl.create(:user_phone) }
+  let!(:user1){ FactoryGirl.create(:user) }
   let!(:payee1){ FactoryGirl.create(:payee, user: user1) }
 
   it { should validate_presence_of :name }

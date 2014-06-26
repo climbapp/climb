@@ -39,10 +39,10 @@
     <%= f.label :min_due %><br>
     <%= f.text_field :min_due %>
   </div>
-  <div class="field">
-    <%= f.label :payee_id %><br>
-    <%= f.text_field :payee_id %>
-  </div>
+  <% if @payee %>
+    <%= hidden_field_tag :payee_id, @payee.id %>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
