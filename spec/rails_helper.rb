@@ -4,6 +4,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'shoulda/matchers'
+require 'rspec_candy/helpers'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.

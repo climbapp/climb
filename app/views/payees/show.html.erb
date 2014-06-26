@@ -12,7 +12,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @payee.user.name %>
+  <%= @payee.user.email %>
 </p>
 
 <h1>Listing bills associated with <%= @payee.name %>:</h1>
@@ -53,7 +53,7 @@
 
 <br>
 
-<%= link_to 'New Bill', new_bill_path %>
+<%= link_to 'New Bill', "/payees/#{@payee.id}/bills/new"  %>
 
 <%= link_to 'Edit', edit_payee_path(@payee) %> |
 <%= link_to 'Home', user_path(@payee.user) %>

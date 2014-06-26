@@ -5,8 +5,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @payees = current_user.payees
+  end
+
   def create
-    p user_params
     @user = sign_up(user_params)
 
     if @user.valid?
@@ -15,6 +18,23 @@ class UsersController < ApplicationController
     else
       p @user.errors.to_a
       render :new
+    end
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 

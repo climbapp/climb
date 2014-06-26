@@ -1,7 +1,7 @@
 <h1>Welcome to Climb!</h1>
 
 <% if current_user %>
-  <h2>Get started! Hello Ruby</h2>
+  <%= link_to "Edit Profile", edit_user_path(current_user) %>
 <% end %>
 
 <p>Dig Your Way Out of Debt.</p>
