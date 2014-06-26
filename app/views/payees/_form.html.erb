@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :recurring %><br>
-    <%= f.text_field :recurring %>
+    <%= f.select :recurring, options_for_select(%w[annually monthly weekly]) %>
   </div>
   <% if @user %>
     <%= hidden_field_tag :user_id, @user.id %>

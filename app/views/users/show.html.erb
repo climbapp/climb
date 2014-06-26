@@ -15,10 +15,8 @@
       <tr>
         <td><%= payee.name %></td>
         <td><%= payee.recurring %></td>
-        <td><%= payee.user %></td>
-        <td><%= link_to 'Show', payee %></td>
-        <td><%= link_to 'Edit', edit_payee_path(payee) %></td>
-        <td><%= link_to 'Destroy', payee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit This Account', edit_payee_path(payee) %></td>
+        <td><%= link_to 'Free me from my sins, for I have been forgiven.', payee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

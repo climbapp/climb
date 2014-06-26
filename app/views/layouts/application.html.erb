@@ -7,11 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if current_user %>
-  <p>Hello, <%= current_user.email %></p>
+<h1>Welcome to Climb!</h1>
+<p>Dig Your Way Out of Debt.</p>
+  <% if current_user %>
+    <p>Hello, <%= link_to current_user.email, user_path(current_user) %></p>
   <%= link_to "Edit Profile", edit_user_path(current_user) %>
 <% end %>
-
 <%= yield %>
 
 </body>

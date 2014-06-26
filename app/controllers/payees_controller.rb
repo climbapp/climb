@@ -27,10 +27,11 @@ class PayeesController < ApplicationController
   # POST /payees.json
   def create
     @payee = Payee.new(payee_params)
-    @payee.user = current_user
+    @user = current_user
+    @payee.user = @user
     respond_to do |format|
       if @payee.save
-        format.html { redirect_to @payee, notice: 'Payee was successfully created.' }
+        format.html { redirect_to @user, notice: 'Payee was successfully created.' }
         format.json { render :show, status: :created, location: @payee }
       else
         format.html { render :new }
