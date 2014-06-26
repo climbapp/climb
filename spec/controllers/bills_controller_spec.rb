@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe BillsController do
-  let(:my_user){FactoryGirl.create(:user_phone)}
+  let(:my_user){FactoryGirl.create(:user)}
   let(:my_payee){FactoryGirl.create(:payee, :user => my_user)}
 
   describe '#index' do

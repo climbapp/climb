@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing <%= @user.name %>'s payees</h1>
+<h1>Listing <%= current_user.email %> payees</h1>
 
 <table>
   <thead>
@@ -17,7 +15,7 @@
       <tr>
         <td><%= payee.name %></td>
         <td><%= payee.recurring %></td>
-        <td><%= payee.user.name %></td>
+        <td><%= payee.user %></td>
         <td><%= link_to 'Show', payee %></td>
         <td><%= link_to 'Edit', edit_payee_path(payee) %></td>
         <td><%= link_to 'Destroy', payee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,5 +26,4 @@
 
 <br>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to "New Payee", "/users/#{@user.id}/payees/new" %>
+<%= link_to 'New Payee', new_payee_path %>

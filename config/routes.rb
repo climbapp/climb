@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resource :session, only: [:new, :create, :destroy]
+  root "welcome#index"
+
   resources :bills
   get '/payees/:payee_id/bills/new', :to => 'bills#new'
   resources :payees

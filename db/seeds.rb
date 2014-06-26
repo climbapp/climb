@@ -3,7 +3,7 @@ def getNum
 end
 
 def getCategory
-  categories = ["Savings", "Credit", "Debt", "Income"]
+  categories = ["Home", "Utilities", "Debt", "Other"]
   categories.sample
 end
 
@@ -15,11 +15,11 @@ User.destroy_all
 Payee.destroy_all
 Bill.destroy_all
 
-joe = User.create({ name: "Joe Blow", email: "joe@charity.org", password: "123", sms_remind?: true, email_remind?: false })
+joe = User.create({ email: "joe@charity.org", password_digest: "123", sms_remind?: true, email_remind?: false })
 
 users = [joe]
 10.times do
-  users << User.create({name: CoolFaker::Character.name, email: Faker::Internet.email, password: 'helloworld', sms_remind?: [true, false].sample, email_remind?: [true, false].sample ,phone: Faker::Number.number(10)})
+  users << User.create({email: Faker::Internet.email, password_digest: 'helloworld', sms_remind?: [true, false].sample, email_remind?: [true, false].sample ,phone: Faker::Number.number(10)})
 end
 
 payees = []

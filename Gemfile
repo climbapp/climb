@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 # Use postgresql as the database for Active Record
@@ -16,6 +15,8 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'monban'
+gem 'monban-generators'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -29,18 +30,21 @@ gem 'spring',        group: :development
 group :development do
   gem "awesome_print"
   gem "better_errors"
+  gem "binding_of_caller"
 end
 
-group :development, :test do
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'factory_girl_rails'
   gem "cool_faker"
   gem "faker"
-  gem "factory_girl_rails"
+  gem 'rspec_candy'
 end
 
-
 group :test do
-  gem "rspec-rails"
-  gem "shoulda-matchers"
+  gem 'shoulda-matchers', require: false
   gem "minitest"
 end
 # Use ActiveModel has_secure_password
