@@ -9,7 +9,9 @@
 <body>
 <% if current_user %>
   <p>Hello, <%= current_user.email %></p>
+  <%= link_to "Edit Profile", edit_user_path(current_user) %>
 <% end %>
+
 <%= yield %>
 
 </body>
