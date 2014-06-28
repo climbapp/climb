@@ -1,10 +1,14 @@
 <h1>Welcome to Climb!</h1>
+<p>Climb Your Way Out of Debt.</p>
 
 <% if current_user %>
   <%= link_to "Edit Profile", edit_user_path(current_user) %>
+  <%= link_to "Add Payee", new_payee_path %>
+  <%= link_to "Log Out", session_path, method: :delete %>
+
+<% else %>
+  <%= link_to "Sign in", new_session_path %>
+  <%= link_to "Sign up", new_user_path %>
 <% end %>
 
-<p>Dig Your Way Out of Debt.</p>
 
-<%= link_to "Sign in", new_session_path %>
-<%= link_to "Sign up", new_user_path %>
