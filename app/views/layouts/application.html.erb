@@ -7,10 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if current_user %>
-  <p>Hello, <%= current_user.email %></p>
-<% end %>
-<%= yield %>
+  <%= link_to "Home", root_path %>
+  <% if current_user %>
+    <%= link_to "Edit Profile", edit_user_path(current_user) %>
+    <%= link_to "Add Payee", new_payee_path %>
+    <%= link_to "Log Out", session_path, method: :delete %>
+    <p>Hello again, <%= current_user.email %></p>
+  <% end %>
+
+  <%= yield %>
 
 </body>
 </html>
