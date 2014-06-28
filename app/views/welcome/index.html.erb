@@ -2,7 +2,14 @@
 <p>Climb Your Way Out of Debt.</p>
 
 <% if current_user %>
-  <h2>Welcome <%= current_user.email %>!</h2>
+  <h2>Hiya, <%= current_user.email %>!</h2>
+  <ul>
+  <% current_user.payees.each do |payee| %>
+    <li><%= link_to payee.name, payee_path(payee) %></li>
+  <% end %>
+  </ul>
+  <%= link_to 'New Payee', new_payee_path %>
+
 <% else %>
   <%= link_to "Sign in", new_session_path %>
   <%= link_to "Sign up", new_user_path %>
